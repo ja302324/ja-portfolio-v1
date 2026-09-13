@@ -1,70 +1,169 @@
 import Header from "./Header";
-import GridMotion from './background/GridMotion';
 import Work from "./work";
+import CaseStudy from "./CaseStudy";
+import GraphicArchive from "./GraphicArchive";
 import About from "./About";
 import Contact from "./contact";
-import BonaRetro from '../assets/Images/Hero/BonaRetroDesign.jpg';
-import ChaMagazineImg from '../assets/Images/Hero/ChaMagazineImg.jpg';
-import DOF from '../assets/Images/Hero/DOF.jpg';
-import FocusTheme from '../assets/Images/Hero/FocusTheme.jpg';
-import HBDDesignAmyO from '../assets/Images/Hero/HBDDesignAmyO.jpg';
-import JoshIsBack from '../assets/Images/Hero/JoshIsBack.jpg';
-import RenaCoachOfTourney from '../assets/Images/Hero/RenaCoachOfTourney.jpg';
-import SammyAdenikeHBD from '../assets/Images/Hero/SammyAdenikeHBD.jpg';
-import PromiseCanvas from '../assets/Images/Hero/PromiseCanvas.jpg';
-import JessicaGraduation from '../assets/Images/Hero/JessicaGraduation.jpeg';
-import LetsTalkLight from '../assets/Images/Hero/LetsTalkLight.jpeg';
-import Reopening from '../assets/Images/Hero/Re-opening.jpg';
-import Artboard1 from '../assets/Images/Hero/Artboard1.jpg';
-import Independance65 from '../assets/Images/Hero/Independance65.jpg';
-import Front from '../assets/Images/Hero/Front.jpg';
+import "../css/home.css";
 
+const tickerSegment = Array(4).fill(["Design", "Code", "Motion", "Strategy", "Basketball"]).flat();
+const tickerLoop = [...tickerSegment, ...tickerSegment];
 
 const Home = () => {
-    // note: you'll need to make sure the parent container of this component is sized properly
-    const items = [
-        <img key="josh-back" src={JoshIsBack} alt="Josh Is Back" />,
-        <img key="cha-magazine" src={ChaMagazineImg} alt="Cha Magazine" />,
-        <img key="rena-coach" src={RenaCoachOfTourney} alt="Rena Coach of Tourney" />,
-        <img key="sammy-hbd" src={SammyAdenikeHBD} alt="Sammy Adenike HBD" />,
-        <img key="artboard1" src={Artboard1} alt="Artboard 1" />,
-        <img key="bona-retro" src={BonaRetro} alt="Bona Retro Design" />,
-        <img key="hbd-amy" src={HBDDesignAmyO} alt="Happy Birthday Amy" />,
-        <img key="dof" src={DOF} alt="DOF" />,
-        <img key="focus-theme" src={FocusTheme} alt="Focus Theme" />,
-        <img key="independance65" src={Independance65} alt="Independance 65" />,
-        <img key="promise-canvas" src={PromiseCanvas} alt="Promise Canvas" />,
-        <img key="jessica-graduation" src={JessicaGraduation} alt="Jessica Graduation" />,
-        <img key="lets-talk-light" src={LetsTalkLight} alt="Let's Talk Light" />,
-        <img key="reopening" src={Reopening} alt="Re-opening" />,
-        <img key="front" src={Front} alt="Front" />
-        // Add more items as needed below
-    ];
-
-
     return (
         <div style={{ position: "relative", background: "transparent", overflow: "visible" }}>
-            <section id="home-section" style={{ position: "relative", minHeight: "110vh", overflow: "visible" }}>
-                <div style={{ position: "absolute", inset: 0, zIndex: -2, pointerEvents: "none", overflow: "visible" }}>
-                    <GridMotion items={items} gradientColor="black" />
-                </div>
+            <Header />
 
-                <div
+            <section id="home-section" style={{ position: "relative", minHeight: "100svh", overflow: "hidden" }}>
+
+                {/* Full-bleed hero photo */}
+                <img
+                    src="/hero.png"
+                    alt="Jesse Adamu"
                     style={{
                         position: "absolute",
-                        top: 0,
-                        left: 0,
-                        right: 0,
-                        zIndex: 3,
-                        pointerEvents: "none"
+                        inset: 0,
+                        width: "100%",
+                        height: "100%",
+                        objectFit: "cover",
+                        objectPosition: "46% 27%",
+                        transform: "scale(1.35)",
+                        transformOrigin: "40% 40%",
+                        zIndex: 0,
+                        pointerEvents: "none",
+                        userSelect: "none",
                     }}
-                >
-                    <Header />
+                />
+
+                {/* Scrim: overall veil + heavy bottom gradient for text legibility */}
+                <div style={{
+                    position: "absolute",
+                    inset: 0,
+                    zIndex: 1,
+                    pointerEvents: "none",
+                    background: `
+                        linear-gradient(to top,
+                            rgba(0,0,0,0.92) 0%,
+                            rgba(0,0,0,0.60) 30%,
+                            rgba(0,0,0,0.20) 60%,
+                            rgba(0,0,0,0.10) 100%
+                        )
+                    `,
+                }} />
+
+                {/* Hero text overlay */}
+                <div style={{
+                    position: "absolute",
+                    inset: 0,
+                    zIndex: 2,
+                    display: "flex",
+                    alignItems: "flex-end",
+                    justifyContent: "space-between",
+                    padding: "0 clamp(24px, 5vw, 76px) clamp(40px, 6vh, 64px)",
+                    gap: "24px",
+                    flexWrap: "wrap",
+                }}>
+                    {/* Bottom-left: name block */}
+                    <div>
+                        {/* Eyebrow */}
+                        <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "10px" }}>
+                            <span style={{ display: "block", width: "28px", height: "2px", background: "var(--accent)", flexShrink: 0 }} />
+                            <span style={{
+                                fontFamily: "var(--font-body)",
+                                fontSize: "8px",
+                                fontWeight: 700,
+                                letterSpacing: "0.18em",
+                                textTransform: "uppercase",
+                                color: "var(--paper)",
+                                opacity: 0.7,
+                            }}>Founder · Developer · Designer</span>
+                        </div>
+
+                        {/* Stacked name — tight, no gap */}
+                        <div style={{ display: "flex", flexDirection: "column" }}>
+                            <span style={{
+                                fontFamily: "var(--font-script)",
+                                fontSize: "clamp(100px, 15vw, 200px)",
+                                color: "var(--paper)",
+                                lineHeight: 0.78,
+                                letterSpacing: "-0.04em",
+                                display: "block",
+                                textShadow: "0 12px 24px rgba(0,0,0,0.55)",
+                                position: "relative",
+                                zIndex: 1,
+                                marginTop: "28px",
+                            }}>Jesse</span>
+                            <span style={{
+                                fontFamily: "var(--font-serif)",
+                                fontWeight: 400,
+                                fontSize: "clamp(52px, 11vw, 200px)",
+                                color: "var(--paper)",
+                                lineHeight: 0.88,
+                                letterSpacing: "0.06em",
+                                textTransform: "uppercase",
+                                display: "block",
+                                marginTop: "-50px",
+                                position: "relative",
+                                zIndex: 0,
+                            }}>Adamu</span>
+                        </div>
+                    </div>
+
+                    {/* Bottom-right: quote block */}
+                    <div style={{
+                        maxWidth: "clamp(220px, 28vw, 420px)",
+                        display: "flex",
+                        flexDirection: "column",
+                        gap: "10px",
+                        paddingBottom: "6px",
+                        alignSelf: "flex-end",
+                    }}>
+                        <span style={{ display: "block", width: "28px", height: "2px", background: "var(--accent)" }} />
+                        <p style={{
+                            margin: 0,
+                            fontFamily: "var(--font-body)",
+                            fontSize: "clamp(18px, 1.8vw, 18px)",
+                            lineHeight: 1.4,
+                            color: "var(--paper)",
+                        }}>
+                            "<span style={{ fontWeight: 700 }}>Maturity</span> is not a gift. It's a product of <span style={{ fontWeight: 700 }}>time, process, and investedness</span>."
+                        </p>
+                        <p style={{
+                            margin: 0,
+                            fontFamily: "var(--font-body)",
+                            fontSize: "11px",
+                            fontWeight: 700,
+                            letterSpacing: "0.18em",
+                            textTransform: "uppercase",
+                            color: "var(--muted)",
+                        }}>— AJS</p>
+                    </div>
                 </div>
             </section>
 
+            <div className="ticker-strip" aria-hidden="true">
+                <div className="ticker-track">
+                    {tickerLoop.map((word, i) => <span key={i}>{word}</span>)}
+                </div>
+            </div>
+
+            <div className="stats-strip" aria-label="Career highlights">
+                <div className="stat-item"><strong>150+</strong><span>graphics and videos across five tournaments</span></div>
+                <div className="stat-item"><strong>23.5M</strong><span>content views in 2026</span></div>
+                <div className="stat-item"><strong>3 YRS</strong><span>running Nigeria Basketball content</span></div>
+                <div className="stat-item"><strong>2</strong><span>languages: English and French</span></div>
+            </div>
+
             <section style={{ position: "relative", zIndex: 2 }}>
                 <Work />
+            </section>
+
+            <section style={{ position: "relative", zIndex: 2 }}>
+                <CaseStudy />
+            </section>
+
+            <section style={{ position: "relative", zIndex: 2 }}>
+                <GraphicArchive />
             </section>
 
             <section style={{ position: "relative", zIndex: 2 }}>

@@ -1,22 +1,6 @@
 @import "tailwindcss";
 
 @font-face {
-  font-family: "MAZEGIN";
-  src: url("./assets/fonts/MAZEGIN.ttf") format("truetype");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "TerminaTest";
-  src: url("./assets/fonts/TerminaTest-Demi.otf") format("opentype");
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
   font-family: "BuiltTitlingRg";
   src: url("./assets/fonts/built titling rg.otf") format("opentype");
   font-weight: 400;
@@ -24,9 +8,49 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "Rose Couture";
+  src: url("./assets/fonts/Rose Couture.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Noorge";
+  src: url("./assets/fonts/noorgekarlosregular-rp65l.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Rosemode";
+  src: url("./assets/fonts/Rosemode.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Rosemode";
+  src: url("./assets/fonts/Briella Rose.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --font-heading: "BuiltTitlingRg", serif;
-  --font-body: "TerminaTest", sans-serif;
+  --font-body: "Rosemode", sans-serif;
+  --font-script: "Rose Couture", cursive;
+  --font-serif: "Noorge", sans-serif;
+  --ink: #090909;
+  --ink-rgb: 9, 9, 9;
+  --paper: #f3efe5;
+  --muted: #b9b5ad;
+  --accent: #ff5a1f;
+  --accent-rgb: 255, 90, 31;
 }
 
 body {

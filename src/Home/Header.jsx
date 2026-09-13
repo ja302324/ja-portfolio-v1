@@ -4,6 +4,7 @@ import logo from "../assets/Images/navbar/Signature.png"
 
 const Header = () => {
     const [isOpen, setIsOpen] = useState(false)
+    const [scrolled, setScrolled] = useState(false)
 
     useEffect(() => {
         const mq = window.matchMedia("(min-width: 769px)")
@@ -12,12 +13,19 @@ const Header = () => {
         return () => mq.removeEventListener("change", handler)
     }, [])
 
+    useEffect(() => {
+        const handleScroll = () => setScrolled(window.scrollY > 40)
+        handleScroll()
+        window.addEventListener("scroll", handleScroll, { passive: true })
+        return () => window.removeEventListener("scroll", handleScroll)
+    }, [])
+
     const close = () => setIsOpen(false)
 
     return (
         <>
             {/* Desktop + mobile pill bar */}
-            <div className="navbar">
+            <div className={`navbar${scrolled ? " navbar--scrolled" : ""}`}>
                 <a href="#home-section"><img className="nav-img" src={logo} alt="Jesse Adamu logo" /></a>
 
                 <ul className="nav-menu">
