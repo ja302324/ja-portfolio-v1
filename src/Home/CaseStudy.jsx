@@ -1,5 +1,8 @@
 import { useEffect, useRef, useState } from "react"
 import "../css/casestudy.css"
+import { caseStudyPieces } from "../data/portfolioWork"
+import { Piece, Lightbox, useLightbox } from "../components/PieceGallery"
+import ep1Thumb from "../assets/Images/NigeriaBasketball/videos/ep1-thumbnail.jpg"
 
 const YOUTUBE_VIDEO_ID = "CHdo-epTRKc"
 
@@ -34,6 +37,7 @@ export default function CaseStudy() {
     const videoWrapRef = useRef(null)
     const iframeRef = useRef(null)
     const [videoStarted, setVideoStarted] = useState(false)
+    const lightbox = useLightbox()
 
     useEffect(() => {
         const node = videoWrapRef.current
@@ -70,15 +74,17 @@ export default function CaseStudy() {
             </div>
 
             <div className="video-embed-wrap" ref={videoWrapRef}>
-                {videoStarted && (
-                    <iframe
-                        ref={iframeRef}
-                        src={`https://www.youtube.com/embed/${YOUTUBE_VIDEO_ID}?autoplay=1&mute=1&enablejsapi=1&rel=0`}
-                        title="Summer 2026 Nigeria Basketball aftermovie"
-                        allow="autoplay; encrypted-media"
-                        allowFullScreen
-                    />
-                )}
+                {videoStarted
+                    ? (
+                        <iframe
+                            ref={iframeRef}
+                            src={`https://www.youtube.com/embed/${YOUTUBE_VIDEO_ID}?autoplay=1&mute=1&enablejsapi=1&rel=0`}
+                            title="Summer 2026 Nigeria Basketball aftermovie"
+                            allow="autoplay; encrypted-media"
+                            allowFullScreen
+                        />
+                    )
+                    : <img src={ep1Thumb} alt="Summer 2026 Nigeria Basketball aftermovie" className="video-embed-poster" />}
             </div>
 
             <div className="case-grid">
@@ -101,14 +107,13 @@ export default function CaseStudy() {
                 ))}
             </div>
 
-            <div className="graphics-dropzone" role="img" aria-label="Placeholder for the newest Summer 2026 graphics">
-                <div>
-                    <strong>New Summer Graphics</strong>
-                    <span>Jesse to add here</span>
-                </div>
+            <div className="case-carousel">
+                {caseStudyPieces.map(piece => <Piece piece={piece} onOpen={lightbox.open} key={piece.title} />)}
             </div>
 
             <p className="case-template-note">Case study template: reuse this Brief / Work / Result structure for each tournament.</p>
+
+            <Lightbox piece={lightbox.active} onClose={lightbox.close} />
         </section>
     )
 }

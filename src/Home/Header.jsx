@@ -1,10 +1,14 @@
 import { useState, useEffect } from "react"
+import { Link, useLocation } from "react-router-dom"
 import "../css/header.css"
 import logo from "../assets/Images/navbar/Signature.png"
 
 const Header = () => {
     const [isOpen, setIsOpen] = useState(false)
     const [scrolled, setScrolled] = useState(false)
+    const { pathname } = useLocation()
+    const isHome = pathname === "/"
+    const sectionHref = id => isHome ? `#${id}` : `/#${id}`
 
     useEffect(() => {
         const mq = window.matchMedia("(min-width: 769px)")
@@ -26,13 +30,13 @@ const Header = () => {
         <>
             {/* Desktop + mobile pill bar */}
             <div className={`navbar${scrolled ? " navbar--scrolled" : ""}`}>
-                <a href="#home-section"><img className="nav-img" src={logo} alt="Jesse Adamu logo" /></a>
+                <Link to="/"><img className="nav-img" src={logo} alt="Jesse Adamu logo" /></Link>
 
                 <ul className="nav-menu">
-                    <li><a href="#home-section">Home</a></li>
-                    <li><a href="#about-section">About</a></li>
-                    <li><a href="#work-section">Portfolio</a></li>
-                    <li><a href="#contact-section">Contact</a></li>
+                    <li><Link to="/">Home</Link></li>
+                    <li><a href={sectionHref("about-section")}>About</a></li>
+                    <li><Link to="/portfolio">Portfolio</Link></li>
+                    <li><a href={sectionHref("contact-section")}>Contact</a></li>
                 </ul>
 
                 <button
@@ -59,10 +63,10 @@ const Header = () => {
                     </div>
 
                     <nav className="nav-fullscreen-links">
-                        <a href="#home-section"    onClick={close}>Home</a>
-                        <a href="#about-section"   onClick={close}>About</a>
-                        <a href="#work-section"    onClick={close}>Portfolio</a>
-                        <a href="#contact-section" onClick={close}>Contact</a>
+                        <Link to="/" onClick={close}>Home</Link>
+                        <a href={sectionHref("about-section")} onClick={close}>About</a>
+                        <Link to="/portfolio" onClick={close}>Portfolio</Link>
+                        <a href={sectionHref("contact-section")} onClick={close}>Contact</a>
                     </nav>
                 </div>
             )}

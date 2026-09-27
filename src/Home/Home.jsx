@@ -1,7 +1,8 @@
+import { useEffect } from "react";
 import Header from "./Header";
 import Work from "./work";
 import CaseStudy from "./CaseStudy";
-import GraphicArchive from "./GraphicArchive";
+import NigeriaBasketballPreview from "./NigeriaBasketballPreview";
 import About from "./About";
 import Contact from "./contact";
 import "../css/home.css";
@@ -10,6 +11,12 @@ const tickerSegment = Array(4).fill(["Design", "Code", "Motion", "Strategy", "Ba
 const tickerLoop = [...tickerSegment, ...tickerSegment];
 
 const Home = () => {
+    useEffect(() => {
+        if (!window.location.hash) return
+        const target = document.querySelector(window.location.hash)
+        target?.scrollIntoView()
+    }, [])
+
     return (
         <div style={{ position: "relative", background: "transparent", overflow: "visible" }}>
             <Header />
@@ -163,7 +170,7 @@ const Home = () => {
             </section>
 
             <section style={{ position: "relative", zIndex: 2 }}>
-                <GraphicArchive />
+                <NigeriaBasketballPreview />
             </section>
 
             <section style={{ position: "relative", zIndex: 2 }}>

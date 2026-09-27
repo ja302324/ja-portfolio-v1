@@ -1,10 +1,13 @@
 import "../css/work.css"
+import summerPreview from "../assets/Images/NigeriaBasketball/worldcup/gameday/vs-korea.jpg"
+import dtigressPreview from "../assets/Images/NigeriaBasketball/afrobasket/gameday/final-gameday.jpg"
+import noraPreview from "../assets/Images/NoraAdamuMinistries/in-his-presence.jpg"
 
 const projects = [
-    { title: "Summer 2026", tag: "Sports · Video · Strategy", preview: "Nigeria Basketball summer campaign preview" },
-    { title: "Saved by Design", tag: "Web · Development", preview: "Client website preview" },
-    { title: "D'Tigress Campaign", tag: "Social · Motion", preview: "Game-day campaign preview" },
-    { title: "Nora Adamu Ministries", tag: "Brand · Events", preview: "Ministry identity preview" },
+    { title: "Summer 2026", tag: "Sports · Video · Strategy", previewImage: summerPreview, preview: "Nigeria Basketball summer campaign preview" },
+    { title: "Saved by Design", tag: "Web · Development", href: "https://tastyfingerrestaurant.com", preview: "Client website preview" },
+    { title: "D'Tigress Campaign", tag: "Social · Motion", previewImage: dtigressPreview, preview: "Game-day campaign preview" },
+    { title: "Nora Adamu Ministries", tag: "Brand · Events", previewImage: noraPreview, preview: "Ministry identity preview" },
 ]
 
 export default function Work() {
@@ -19,15 +22,31 @@ export default function Work() {
             </div>
 
             <div className="work-index">
-                {projects.map((project, index) => (
-                    <div className="work-row" tabIndex={0} key={project.title}>
-                        <span className="work-row-index">{String(index + 1).padStart(2, "0")}</span>
-                        <h3>{project.title}</h3>
-                        <span className="work-row-tag">{project.tag}</span>
-                        <span className="work-row-arrow">↗</span>
-                        <div className="work-preview">{project.preview}</div>
-                    </div>
-                ))}
+                {projects.map((project, index) => {
+                    const content = (
+                        <>
+                            <span className="work-row-index">{String(index + 1).padStart(2, "0")}</span>
+                            <h3>{project.title}</h3>
+                            <span className="work-row-tag">{project.tag}</span>
+                            <span className="work-row-arrow">↗</span>
+                            <div className="work-preview">
+                                {project.previewImage
+                                    ? <img src={project.previewImage} alt={project.preview} />
+                                    : <span className="work-preview-text">{project.preview}</span>}
+                            </div>
+                        </>
+                    )
+
+                    return project.href ? (
+                        <a className="work-row" href={project.href} target="_blank" rel="noreferrer" key={project.title}>
+                            {content}
+                        </a>
+                    ) : (
+                        <div className="work-row" tabIndex={0} key={project.title}>
+                            {content}
+                        </div>
+                    )
+                })}
             </div>
         </section>
     )
