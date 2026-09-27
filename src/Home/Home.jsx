@@ -100,7 +100,7 @@ const Home = () => {
                                 zIndex: 1,
                                 marginTop: "28px",
                             }}>Jesse</span>
-                            <span style={{
+                            <span className="hero-name-adamu" style={{
                                 fontFamily: "var(--font-serif)",
                                 fontWeight: 400,
                                 fontSize: "clamp(52px, 11vw, 200px)",
