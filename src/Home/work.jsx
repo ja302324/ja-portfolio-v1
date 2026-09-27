@@ -28,7 +28,7 @@ export default function Work() {
                             <span className="work-row-index">{String(index + 1).padStart(2, "0")}</span>
                             <h3>{project.title}</h3>
                             <span className="work-row-tag">{project.tag}</span>
-                            <span className="work-row-arrow">↗</span>
+                            <span className="work-row-arrow">↗︎</span>
                             <div className="work-preview">
                                 {project.previewImage
                                     ? <img src={project.previewImage} alt={project.preview} />

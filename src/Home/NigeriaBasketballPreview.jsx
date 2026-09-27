@@ -50,7 +50,7 @@ export default function NigeriaBasketballPreview() {
             <Masonry pieces={highlights} onOpen={lightbox.open} columns={2} />
 
             <div className="nb-see-more">
-                <Link to="/portfolio" className="nb-see-more-btn">See more work ↗</Link>
+                <Link to="/portfolio" className="nb-see-more-btn">See more work ↗︎</Link>
             </div>
 
             <Lightbox piece={lightbox.active} onClose={lightbox.close} />

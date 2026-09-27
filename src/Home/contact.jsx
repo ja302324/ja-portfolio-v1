@@ -48,7 +48,7 @@ export default function Contact() {
             <div className="contact-bottom-bar">
                 <span className="contact-wordmark">Jesse Adamu</span>
                 <div className="contact-footer-note">© 2026 Jesse Adamu — All rights reserved.</div>
-                <a className="contact-back-top" href="#home-section">Back to top ↑</a>
+                <a className="contact-back-top" href="#home-section">Back to top ↑︎</a>
             </div>
         </section>
     )

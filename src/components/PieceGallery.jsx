@@ -24,7 +24,7 @@ export function Piece({ piece, onOpen }) {
             <span className="piece-stamp">{piece.stamp}</span>
             <div className="piece-art">
                 <img src={piece.image} alt={piece.title} loading="lazy" />
-                {piece.type === "video" && <span className="piece-play-icon">▶</span>}
+                {piece.type === "video" && <span className="piece-play-icon">▶︎</span>}
             </div>
             <div className="piece-meta">
                 <strong>{piece.title}</strong>
@@ -54,7 +54,7 @@ export function Lightbox({ piece, onClose }) {
 
     return (
         <div className="lightbox" onClick={onClose} role="dialog" aria-modal="true" aria-label={piece.title}>
-            <button type="button" className="lightbox-close" onClick={onClose} aria-label="Close">✕</button>
+            <button type="button" className="lightbox-close" onClick={onClose} aria-label="Close">✕︎</button>
             <div className="lightbox-inner" onClick={e => e.stopPropagation()}>
                 {piece.type === "video"
                     ? (

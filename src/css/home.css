@@ -22,7 +22,7 @@
 }
 
 .ticker-track span::after {
-    content: "✦";
+    content: "✦︎";
     margin: 0 24px;
 }
 
